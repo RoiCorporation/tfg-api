@@ -1,0 +1,22 @@
+[project]
+name = "tfg-api"
+version = "1.0.0"
+description = "API for the backbone of my Bachelor's Thesis project."
+readme = "README.md"
+
+authors = [
+    { name = "Roi López Barata", email = "roilop01@ucm.es" }
+]
+maintainers = [
+    { name = "Roi López Barata", email = "roilop01@ucm.es" }
+]
+
+dependencies = [
+    "fastapi[standard]",
+    "python-dotenv",
+    "psycopg[binary]",
+    "sqlmodel"
+]
+
+[tool.fastapi]
+entrypoint = "api.main:app"
