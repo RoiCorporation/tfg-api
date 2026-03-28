@@ -3,7 +3,7 @@ from api.config import SessionDep
 from api.models import EnvironmentalReadings
 
 
-router = APIRouter(prefix="/tfg/api", tags=["api"])
+router = APIRouter(prefix="/api", tags=["api"])
 
 
 @router.post("/insert_station_readings/")
