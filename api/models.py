@@ -1,4 +1,5 @@
 from datetime import datetime
+import uuid
 from typing import Optional
 from sqlmodel import SQLModel, Field
 from api.utils import now_utc
@@ -10,7 +11,7 @@ MAX_STATION_NAME_LENGTH = 50
 class Station(SQLModel, table=True):
     __tablename__ = "stations_station"
 
-    id: Optional[int] = Field(default=None, primary_key=True)
+    id: Optional[uuid.UUID] = Field(default=uuid.uuid4, primary_key=True, unique=True)
     name: str = Field(max_length=MAX_STATION_NAME_LENGTH, nullable=False)
     is_central_station: bool = Field(default=True, nullable=False)
 
@@ -18,12 +19,12 @@ class Station(SQLModel, table=True):
 class ConnectedStations(SQLModel, table=True):
     __tablename__ = "stations_connected_stations"
 
-    central_station_id: int = Field(
+    central_station_id: uuid.UUID = Field(
         foreign_key="stations_station.id",
         primary_key=True,
         nullable=False,
     )
-    wireless_station_id: int = Field(
+    wireless_station_id: uuid.UUID = Field(
         foreign_key="stations_station.id",
         primary_key=True,
         nullable=False,
@@ -35,7 +36,7 @@ class ConnectedStations(SQLModel, table=True):
 class EnvironmentalReadings(SQLModel, table=True):
     __tablename__ = "stations_environmental_readings"
 
-    station_id: int = Field(
+    station_id: uuid.UUID = Field(
         foreign_key="stations_station.id",
         primary_key=True,
         nullable=False,
@@ -51,8 +52,8 @@ class EnvironmentalReadings(SQLModel, table=True):
     light_intensity: Optional[float] = Field(default=None)
     air_pressure: Optional[float] = Field(default=None)
     iaq: Optional[float] = Field(default=None)
-    co_concentration: Optional[float] = Field(default=None)
-    ch4_concentration: Optional[float] = Field(default=None)
-    c3h8_concentration: Optional[float] = Field(default=None)
-    oh_concentration: Optional[float] = Field(default=None)
-    h2_concentration: Optional[float] = Field(default=None)
+    carbon_monoxide_concentration: Optional[float] = Field(default=None)
+    methane_concentration: Optional[float] = Field(default=None)
+    propane_concentration: Optional[float] = Field(default=None)
+    alcohol_concentration: Optional[float] = Field(default=None)
+    hydrogen_gas_concentration: Optional[float] = Field(default=None)
