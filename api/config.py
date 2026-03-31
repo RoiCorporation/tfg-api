@@ -12,6 +12,8 @@ DB_PASSWORD = getenv("PGPASSWORD_DEV")
 DB_NAME = getenv("PGDATABASE_DEV")
 DB_HOST = getenv("PGHOST_DEV")
 
+API_KEY = getenv("API_KEY")
+
 database_url = (
     f"postgresql+psycopg://{DB_USER}:{DB_PASSWORD}@{DB_HOST}/{DB_NAME}"
     f"?sslmode=require&channel_binding=require"
