@@ -55,5 +55,4 @@ class EnvironmentalReadings(SQLModel, table=True):
     carbon_monoxide_concentration: Optional[float] = Field(default=None)
     methane_concentration: Optional[float] = Field(default=None)
     propane_concentration: Optional[float] = Field(default=None)
-    alcohol_concentration: Optional[float] = Field(default=None)
     hydrogen_gas_concentration: Optional[float] = Field(default=None)
