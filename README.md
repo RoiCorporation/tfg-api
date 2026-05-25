@@ -1,5 +1,5 @@
 # TFG API
-API for our Bachelor's Thesis (TFG) project.
+API for my Bachelor's Thesis (TFG) project.
 
 
 
